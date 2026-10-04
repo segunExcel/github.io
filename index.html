@@ -1,1 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Segun Excel | Data Analyst & Data Scientist</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f8fa;
+            color: #172033;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1150px;
+            width: 90%;
+            margin: auto;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.6;
+        }
+
+        /* HERO */
+
+        .hero {
+            background: white;
+            padding: 110px 0 100px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .eyebrow {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 7vw, 82px);
+            line-height: 1.05;
+            margin-bottom: 25px;
+            letter-spacing: -3px;
+        }
+
+        .hero h1 span {
+            color: #3157d5;
+        }
+
+        .hero p {
+            font-size: 21px;
+            max-width: 720px;
+            color: #566070;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 13px 22px;
+            border-radius: 6px;
+            font-weight: 600;
+            border: 1px solid #172033;
+            display: inline-block;
+        }
+
+        .button-primary {
+            background: #172033;
+            color: white;
+        }
+
+        .button-secondary {
+            background: white;
+            color: #172033;
+        }
+
+        /* SECTION */
+
+        section {
+            padding: 90px 0;
+        }
+
+        .section-heading {
+            margin-bottom: 45px;
+        }
+
+        .section-heading h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: #667085;
+            max-width: 650px;
+        }
+
+        /* PROJECTS */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 30px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.07);
+        }
+
+        .project-number {
+            font-size: 13px;
+            font-weight: 700;
+            color: #3157d5;
+            margin-bottom: 18px;
+        }
+
+        .project-card h3 {
+            font-size: 25px;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: #667085;
+            margin-bottom: 20px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .tag {
+            background: #eef1f7;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .project-link {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        /* VISUALISATION */
+
+        .visualisation-section {
+            background: #172033;
+            color: white;
+        }
+
+        .visualisation-section .section-heading p {
+            color: #b9c0cc;
+        }
+
+        .visualisation-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .visualisation-card {
+            min-height: 180px;
+            border: 1px solid #394256;
+            border-radius: 8px;
+            padding: 25px;
+            display: flex;
+            align-items: flex-end;
+            font-weight: 700;
+        }
+
+        /* SKILLS */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .skill-group {
+            background: white;
+            border: 1px solid #e5e7eb;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        .skill-group h3 {
+            margin-bottom: 12px;
+        }
+
+        .skill-group p {
+            color: #667085;
+        }
+
+        /* ABOUT */
+
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            max-width: 800px;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            color: #566070;
+            margin-bottom: 18px;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            color: #667085;
+            margin: 15px auto 30px;
+            max-width: 600px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid #e5e7eb;
+            padding: 30px 0;
+            background: white;
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 750px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 75px 0;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .projects,
+            .visualisation-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="nav-container">
+
+            <a href="#" class="logo">Segun Excel</a>
+
+            <ul class="nav-links">
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#visualisations">Visualisations</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <header class="hero">
+
+        <div class="container">
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    Data Analytics · Business Intelligence · Data Science
+                </div>
+
+                <h1>
+                    Turning data into
+                    <span>evidence for better decisions.</span>
+                </h1>
+
+                <p>
+                    I use data analysis, visualisation, statistics and machine
+                    learning to investigate problems, uncover patterns and
+                    communicate insights clearly.
+                </p>
+
+                <div class="buttons">
+
+                    <a href="#projects" class="button button-primary">
+                        View my projects
+                    </a>
+
+                    <a href="https://github.com/segunExcel"
+                       class="button button-secondary"
+                       target="_blank">
+                        GitHub
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- PROJECTS -->
+
+    <section id="projects">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <h2>Featured Projects</h2>
+
+                <p>
+                    Selected projects demonstrating my experience across
+                    data analytics, business intelligence and data science.
+                </p>
+
+            </div>
+
+
+            <div class="projects">
+
+
+                <!-- PROJECT 1 -->
+
+                <article class="project-card">
+
+                    <div class="project-number">
+                        PROJECT 01 · NLP
+                    </div>
+
+                    <h3>
+                        COVID-19 Discourse on Instagram
+                    </h3>
+
+                    <p>
+                        A multilingual analysis of over 500,000 Instagram
+                        posts using sentiment analysis, topic modelling
+                        and data visualisation.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">R</span>
+                        <span class="tag">NLP</span>
+                        <span class="tag">Topic Modelling</span>
+                        <span class="tag">Power BI</span>
+                    </div>
+
+                    <a href="#" class="project-link">
+                        View project →
+                    </a>
+
+                </article>
+
+
+                <!-- PROJECT 2 -->
+
+                <article class="project-card">
+
+                    <div class="project-number">
+                        PROJECT 02 · DATA ANALYTICS
+                    </div>
+
+                    <h3>
+                        Project coming soon
+                    </h3>
+
+                    <p>
+                        An end-to-end analytical project demonstrating
+                        SQL, Python and business intelligence techniques.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">SQL</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Power BI</span>
+                    </div>
+
+                    <a href="#" class="project-link">
+                        Coming soon →
+                    </a>
+
+                </article>
+
+
+                <!-- PROJECT 3 -->
+
+                <article class="project-card">
+
+                    <div class="project-number">
+                        PROJECT 03 · MACHINE LEARNING
+                    </div>
+
+                    <h3>
+                        Project coming soon
+                    </h3>
+
+                    <p>
+                        A machine learning project demonstrating predictive
+                        modelling and model evaluation.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">Statistics</span>
+                    </div>
+
+                    <a href="#" class="project-link">
+                        Coming soon →
+                    </a>
+
+                </article>
+
+
+                <!-- PROJECT 4 -->
+
+                <article class="project-card">
+
+                    <div class="project-number">
+                        PROJECT 04 · FORECASTING
+                    </div>
+
+                    <h3>
+                        Project coming soon
+                    </h3>
+
+                    <p>
+                        A time-series forecasting project focused on
+                        translating forecasts into operational decisions.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Forecasting</span>
+                        <span class="tag">Power BI</span>
+                    </div>
+
+                    <a href="#" class="project-link">
+                        Coming soon →
+                    </a>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- VISUALISATIONS -->
+
+    <section id="visualisations" class="visualisation-section">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <h2>Data Visualisation</h2>
+
+                <p>
+                    A collection of dashboards and visual analytics work
+                    created using Power BI, Excel, Python and other tools.
+                </p>
+
+            </div>
+
+
+            <div class="visualisation-grid">
+
+                <div class="visualisation-card">
+                    Power BI Dashboards
+                </div>
+
+                <div class="visualisation-card">
+                    Excel Dashboards
+                </div>
+
+                <div class="visualisation-card">
+                    Python Visualisations
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+
+    <section id="skills">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <h2>Skills</h2>
+
+                <p>
+                    Tools and techniques I use to turn data into
+                    useful analysis and actionable insight.
+                </p>
+
+            </div>
+
+
+            <div class="skills-grid">
+
+                <div class="skill-group">
+
+                    <h3>Data & Programming</h3>
+
+                    <p>
+                        Python · SQL · R · Pandas · NumPy
+                    </p>
+
+                </div>
+
+
+                <div class="skill-group">
+
+                    <h3>Business Intelligence</h3>
+
+                    <p>
+                        Power BI · DAX · Tableau · Excel · Power Query
+                    </p>
+
+                </div>
+
+
+                <div class="skill-group">
+
+                    <h3>Data Science</h3>
+
+                    <p>
+                        Statistics · Machine Learning · NLP ·
+                        Forecasting · Topic Modelling
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about" class="about">
+
+        <div class="container">
+
+            <div class="section-heading">
+                <h2>About Me</h2>
+            </div>
+
+            <div class="about-content">
+
+                <p>
+                    I am a data professional with experience across data
+                    analysis, business intelligence and data science.
+                </p>
+
+                <p>
+                    My work focuses on using data to understand complex
+                    problems, build useful analytical products and
+                    communicate findings to decision-makers.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact" class="contact">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <h2>Let's Connect</h2>
+
+                <p>
+                    Interested in working together or discussing data,
+                    analytics and technology?
+                </p>
+
+            </div>
+
+            <div class="buttons" style="justify-content: center;">
+
+                <a href="https://github.com/segunExcel"
+                   class="button button-primary"
+                   target="_blank">
+                    GitHub
+                </a>
+
+                <a href="#"
+                   class="button button-secondary">
+                    LinkedIn
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="container">
+
+            © 2026 Segun Excel. All rights reserved.
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
